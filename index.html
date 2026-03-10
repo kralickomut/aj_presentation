@@ -72,6 +72,12 @@
             font-size: 0.58em;
         }
 
+        .cite {
+            font-size: 0.6em;
+            vertical-align: super;
+            color: #9aa3ad;
+        }
+
         .accent {
             color: var(--accent);
         }
@@ -246,15 +252,15 @@
             <div class="card-grid">
                 <div class="card fragment">
                     <h3>1. Operating System</h3>
-                    <p>Windows, macOS, Linux and other systems provide different services to programs.[1][2]</p>
+                    <p>Windows, macOS, Linux and other systems provide different services to programs.<span class="cite">[1][2]</span></p>
                 </div>
                 <div class="card fragment">
                     <h3>2. CPU Instruction Set</h3>
-                    <p>The processor can only execute instructions it physically understands.[1][5]</p>
+                    <p>The processor can only execute instructions it physically understands.<span class="cite">[1][5]</span></p>
                 </div>
                 <div class="card fragment">
                     <h3>3. System Type</h3>
-                    <p>Programs may also depend on whether the system is 32-bit or 64-bit.[1][2]</p>
+                    <p>Programs may also depend on whether the system is 32-bit or 64-bit.<span class="cite">[1][2]</span></p>
                 </div>
             </div>
             <aside class="notes">
@@ -268,7 +274,7 @@
 
         <section>
             <h2>How Programs Actually Run</h2>
-            <p class="muted">Applications do not communicate with hardware directly.[1][2]</p>
+            <p class="muted">Applications do not communicate with hardware directly.<span class="cite">[1][2]</span></p>
             <div class="flow" style="flex-direction: column; gap: 14px; margin-top: 36px;">
                 <div class="flow-box">Application</div>
                 <div class="arrow">↓</div>
@@ -308,7 +314,7 @@ CreateFile("file.txt")
               </code></pre>
                 </div>
             </div>
-            <p class="small">Same goal, <span class="accent">different interface</span>.[3][4]</p>
+            <p class="small">Same goal, <span class="accent">different interface</span>.<span class="cite">[3][4]</span></p>
             <aside class="notes">
                 Programs rely on services provided by the operating system.
                 These services include things like opening files, writing to the screen, or accessing the network.
@@ -322,7 +328,7 @@ CreateFile("file.txt")
 
         <section>
             <h2>CPU Instruction Sets</h2>
-            <p>A processor can only execute instructions it <strong>understands</strong>.[1][5]</p>
+            <p>A processor can only execute instructions it <strong>understands</strong>.<span class="cite">[1][5]</span></p>
             <div class="card-grid" style="grid-template-columns: 1fr 1fr;">
                 <div class="card">
                     <h3>Instruction examples</h3>
@@ -335,11 +341,11 @@ CreateFile("file.txt")
                 </div>
                 <div class="card">
                     <h3>Main idea</h3>
-                    <p>These instructions are physically implemented in the processor.[1][5]</p>
+                    <p>These instructions are physically implemented in the processor.<span class="cite">[1][5]</span></p>
                     <p class="fragment">If a program contains a different instruction set, the CPU cannot execute it.[1][5]</p>
                 </div>
             </div>
-            <p class="small accent-2">A program compiled for one architecture may not run on another.[5]</p>
+            <p class="small accent-2">A program compiled for one architecture may not run on another.<span class="cite">[5]</span></p>
             <aside class="notes">
                 Another important factor is the instruction set of the processor.
                 A processor can only execute instructions that it understands.
@@ -371,8 +377,8 @@ CreateFile("file.txt")
                     </ul>
                 </div>
             </div>
-            <p class="small">Many 64-bit systems can still run 32-bit applications through compatibility layers.[1][2]</p>
-            <p class="tiny muted">But modern systems are slowly removing some older 32-bit support.[1][2]</p>
+            <p class="small">Many 64-bit systems can still run 32-bit applications through compatibility layers.<span class="cite">[1][2]</span>]</p>
+            <p class="tiny muted">But modern systems are slowly removing some older 32-bit support.<span class="cite">[1][2]</span></p>
             <aside class="notes">
                 The last important factor is the system type, usually described as 32-bit or 64-bit.
                 This describes how large numbers and memory addresses the processor can handle.
@@ -428,7 +434,7 @@ CreateFile("file.txt")
 
         <section>
             <h2>Conclusion</h2>
-            <p>Software compatibility depends on three main factors.[1][2][5]</p>
+            <p>Software compatibility depends on three main factors.<span class="cite">[1][2][5]</span></p>
             <ul class="checklist" style="display: inline-block; text-align: left; margin-top: 24px;">
                 <li>Operating System</li>
                 <li>CPU Instruction Set</li>
