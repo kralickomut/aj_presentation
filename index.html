@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why Some Programs Cannot Run on Your Computer</title>
+
+    <!-- reveal.js core styles -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css"
+            id="theme"
+    />
+
+    <!-- Code highlighting theme -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css"
+    />
+
+    <style>
+        :root {
+            --accent: #58a6ff;
+            --accent-2: #8b5cf6;
+            --soft: #b8c1cc;
+            --card: rgba(255, 255, 255, 0.07);
+            --border: rgba(255, 255, 255, 0.12);
+        }
+
+        .reveal {
+            font-size: 34px;
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .reveal h1 {
+            font-size: 2.15em;
+        }
+
+        .reveal h2 {
+            color: var(--accent);
+            margin-bottom: 0.4em;
+        }
+
+        .reveal p,
+        .reveal li {
+            line-height: 1.35;
+        }
+
+        .reveal strong {
+            color: #ffffff;
+        }
+
+        .muted {
+            color: var(--soft);
+        }
+
+        .small {
+            font-size: 0.72em;
+        }
+
+        .tiny {
+            font-size: 0.58em;
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+
+        .accent-2 {
+            color: var(--accent-2);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            margin-top: 28px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 22px;
+            text-align: left;
+            min-height: 220px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 0.9em;
+            color: var(--accent);
+        }
+
+        .flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .flow-box {
+            min-width: 220px;
+            padding: 22px 26px;
+            border-radius: 18px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            font-weight: 700;
+        }
+
+        .arrow {
+            font-size: 1.5em;
+            color: var(--accent);
+        }
+
+        .compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 26px;
+            margin-top: 26px;
+        }
+
+        .compare .panel {
+            text-align: left;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+        }
+
+        .compare h3 {
+            margin-top: 0;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            align-items: start;
+            margin-top: 28px;
+        }
+
+        .download-card,
+        .choose-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 24px;
+            text-align: left;
+        }
+
+        .download-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin: 10px 0;
+            font-size: 0.74em;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(88, 166, 255, 0.16);
+            color: #dceeff;
+            font-size: 0.58em;
+        }
+
+        .reveal pre {
+            width: 100%;
+            font-size: 0.58em;
+            border-radius: 18px;
+            box-shadow: none;
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            margin: 12px 0;
+        }
+
+        .checklist li::before {
+            content: "✔ ";
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .footer-note {
+            margin-top: 28px;
+            font-size: 0.58em;
+            color: var(--soft);
+        }
+
+        .sources-list {
+            font-size: 0.52em;
+            line-height: 1.45;
+            text-align: left;
+            max-width: 1050px;
+            margin: 20px auto 0 auto;
+        }
+
+        .sources-list li {
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>Why Some Programs Cannot Run on Your Computer</h1>
+            <p class="accent">František Hromek</p>
+            <p class="muted small">A simple look at software compatibility</p>
+            <aside class="notes">
+                Today I want to talk about a question that many people encounter when using computers.
+                Sometimes you download a program, try to start it, and it simply does not work.
+                The system may show an error like: This application cannot run on your PC.
+                But why does this happen?
+                In most cases, the reason is that the program is not compatible with your system.
+            </aside>
+        </section>
+
+        <section>
+            <h2>The Big Picture</h2>
+            <p>For a program to run, <strong>three things</strong> must match.</p>
+            <div class="card-grid">
+                <div class="card fragment">
+                    <h3>1. Operating System</h3>
+                    <p>Windows, macOS, Linux and other systems provide different services to programs.[1][2]</p>
+                </div>
+                <div class="card fragment">
+                    <h3>2. CPU Instruction Set</h3>
+                    <p>The processor can only execute instructions it physically understands.[1][5]</p>
+                </div>
+                <div class="card fragment">
+                    <h3>3. System Type</h3>
+                    <p>Programs may also depend on whether the system is 32-bit or 64-bit.[1][2]</p>
+                </div>
+            </div>
+            <aside class="notes">
+                For a program to run correctly, three important things must match.
+                First, the operating system.
+                Second, the instruction set of the processor.
+                And third, the system type, which is usually 32-bit or 64-bit.
+                If one of these does not match, the program may not run at all.
+            </aside>
+        </section>
+
+        <section>
+            <h2>How Programs Actually Run</h2>
+            <p class="muted">Applications do not communicate with hardware directly.[1][2]</p>
+            <div class="flow" style="flex-direction: column; gap: 14px; margin-top: 36px;">
+                <div class="flow-box">Application</div>
+                <div class="arrow">↓</div>
+                <div class="flow-box">Operating System</div>
+                <div class="arrow">↓</div>
+                <div class="flow-box">CPU + Hardware</div>
+            </div>
+
+            <aside class="notes">
+                To understand compatibility, we first need to understand how programs actually run.
+                Applications do not communicate directly with hardware.
+                Instead, they communicate with the operating system.
+                The operating system then interacts with the processor and the hardware of the computer.
+                Because of this structure, software must be compatible with both the operating system and the processor.
+            </aside>
+        </section>
+
+        <section>
+            <h2>Operating System Compatibility</h2>
+            <div class="compare">
+                <div class="panel">
+                    <h3>Programs need system services</h3>
+                    <ul>
+                        <li>open a file</li>
+                        <li>write to the screen</li>
+                        <li>use the network</li>
+                    </ul>
+                </div>
+                <div class="panel">
+                    <h3>Simple file example</h3>
+                    <pre><code class="language-c" data-trim>
+// Linux style example
+open("file.txt")
+
+// Windows style example
+CreateFile("file.txt")
+              </code></pre>
+                </div>
+            </div>
+            <p class="small">Same goal, <span class="accent">different interface</span>.[3][4]</p>
+            <aside class="notes">
+                Programs rely on services provided by the operating system.
+                These services include things like opening files, writing to the screen, or accessing the network.
+                Programs use system calls or operating system APIs to request these services.
+                For example, on Linux a program may open a file using open.
+                On Windows, a similar operation is done through CreateFile.
+                Even though both commands open a file, the interface is different.
+                Because of this, software usually needs to be built specifically for each operating system.
+            </aside>
+        </section>
+
+        <section>
+            <h2>CPU Instruction Sets</h2>
+            <p>A processor can only execute instructions it <strong>understands</strong>.[1][5]</p>
+            <div class="card-grid" style="grid-template-columns: 1fr 1fr;">
+                <div class="card">
+                    <h3>Instruction examples</h3>
+                    <ul>
+                        <li>add numbers</li>
+                        <li>move data</li>
+                        <li>compare values</li>
+                        <li>jump to another instruction</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Main idea</h3>
+                    <p>These instructions are physically implemented in the processor.[1][5]</p>
+                    <p class="fragment">If a program contains a different instruction set, the CPU cannot execute it.[1][5]</p>
+                </div>
+            </div>
+            <p class="small accent-2">A program compiled for one architecture may not run on another.[5]</p>
+            <aside class="notes">
+                Another important factor is the instruction set of the processor.
+                A processor can only execute instructions that it understands.
+                These instructions are defined in something called the instruction set.
+                Typical instructions include operations like adding numbers, moving data, comparing values, or jumping to another part of the program.
+                These instructions are physically implemented in the processor hardware.
+                If a program contains instructions that the processor does not understand, it simply cannot execute them.
+                Because of this, programs compiled for one processor architecture may not run on another.
+            </aside>
+        </section>
+
+        <section>
+            <h2>32-bit vs 64-bit Systems</h2>
+            <div class="compare">
+                <div class="panel">
+                    <h3>32-bit</h3>
+                    <ul>
+                        <li>smaller address space</li>
+                        <li>about 4 GB RAM limit</li>
+                        <li>older software and systems</li>
+                    </ul>
+                </div>
+                <div class="panel">
+                    <h3>64-bit</h3>
+                    <ul>
+                        <li>much larger address space</li>
+                        <li>modern computers</li>
+                        <li>better support for large memory</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="small">Many 64-bit systems can still run 32-bit applications through compatibility layers.[1][2]</p>
+            <p class="tiny muted">But modern systems are slowly removing some older 32-bit support.[1][2]</p>
+            <aside class="notes">
+                The last important factor is the system type, usually described as 32-bit or 64-bit.
+                This describes how large numbers and memory addresses the processor can handle.
+                A 32-bit system can address about four gigabytes of memory.
+                A 64-bit system can address much more memory and is used by modern computers.
+                Many 64-bit operating systems can still run older 32-bit programs using compatibility layers.
+                However, some modern systems are gradually removing support for 32-bit applications.
+            </aside>
+        </section>
+
+        <section>
+            <h2>Choosing the Correct Download</h2>
+            <div class="download-grid">
+                <div class="download-card">
+                    <h3>Example download page</h3>
+                    <div class="download-option">
+                        <span>Windows x64</span>
+                        <span class="tag">64-bit</span>
+                    </div>
+                    <div class="download-option">
+                        <span>Windows x86</span>
+                        <span class="tag">32-bit</span>
+                    </div>
+                    <div class="download-option">
+                        <span>macOS</span>
+                        <span class="tag">Apple</span>
+                    </div>
+                    <div class="download-option">
+                        <span>Linux</span>
+                        <span class="tag">Package</span>
+                    </div>
+                    <div class="download-option">
+                        <span>ARM version</span>
+                        <span class="tag">CPU</span>
+                    </div>
+                </div>
+                <div class="choose-card">
+                    <h3>How to choose correctly</h3>
+                    <ul class="checklist">
+                        <li>Check your operating system</li>
+                        <li>Check your processor type</li>
+                        <li>Check if your system is 32-bit or 64-bit</li>
+                    </ul>
+                </div>
+            </div>
+            <aside class="notes">
+                When downloading software, you often see multiple versions of the same program.
+                For example, there may be versions for Windows, macOS, or Linux.
+                There may also be versions for different processor types or system types.
+                To install the correct version, you need to choose the one that matches your operating system, processor architecture, and system type.
+            </aside>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>Software compatibility depends on three main factors.[1][2][5]</p>
+            <ul class="checklist" style="display: inline-block; text-align: left; margin-top: 24px;">
+                <li>Operating System</li>
+                <li>CPU Instruction Set</li>
+                <li>System Architecture (32-bit / 64-bit)</li>
+            </ul>
+            <p class="fragment" style="margin-top: 28px;">
+                If one of these does not match, the program may not run on your computer.
+            </p>
+            <p class="fragment accent small">Thank you for your attention.</p>
+            <aside class="notes">
+                To summarize, software compatibility depends on three main factors.
+                The operating system must match the program.
+                The processor must understand the instructions used by the program.
+                And the system architecture must also be compatible.
+                If one of these elements does not match, the program may not run on your computer.
+                Understanding these differences helps explain why some programs work and others do not.
+            </aside>
+        </section>
+
+        <section>
+            <h2>Sources</h2>
+            <ol class="sources-list">
+                <li>
+                    SILBERSCHATZ, Abraham, GALVIN, Peter B. and GAGNE, Greg.
+                    <em>Operating System Concepts</em>.
+                    10th ed. Hoboken: Wiley, 2018.
+                    ISBN 978-1-119-32091-3.
+                </li>
+                <li>
+                    TANENBAUM, Andrew S. and BOS, Herbert.
+                    <em>Modern Operating Systems</em>.
+                    4th ed. Harlow: Pearson, 2014.
+                    ISBN 978-0-13-359162-0.
+                </li>
+                <li>
+                    MICROSOFT.
+                    <em>CreateFileA function (fileapi.h)</em> [online].
+                    Microsoft Learn [cit. 2026-03-11].
+                    Available from:
+                    https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilea
+                </li>
+                <li>
+                    KERRISK, Michael, ed.
+                    <em>open(2) — Linux manual page</em> [online].
+                    man7.org [cit. 2026-03-11].
+                    Available from:
+                    https://man7.org/linux/man-pages/man2/open.2.html
+                </li>
+                <li>
+                    INTEL.
+                    <em>Intel® 64 and IA-32 Architectures Software Developer’s Manual</em> [online].
+                    Intel [cit. 2026-03-11].
+                    Available from:
+                    https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html
+                </li>
+                <li>
+                    HAKIM EL HATTAB et al.
+                    <em>Reveal.js</em> [online].
+                    revealjs.com [cit. 2026-03-11].
+                    Available from:
+                    https://revealjs.com
+                </li>
+            </ol>
+            <p class="tiny muted">
+                Citation style adapted to numbered references in the spirit of ČSN ISO 690:2022.
+            </p>
+            <aside class="notes">
+                These are the main sources used for the presentation.
+                The key ideas come from operating system textbooks and official documentation.
+            </aside>
+        </section>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+<script>
+    Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        controls: true,
+        progress: true,
+        center: true,
+        transition: 'slide',
+        backgroundTransition: 'fade',
+        plugins: [RevealNotes, RevealHighlight]
+    });
+</script>
+</body>
+</html>
