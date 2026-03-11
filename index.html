@@ -118,6 +118,31 @@
             flex-wrap: wrap;
         }
 
+        .download-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            font-size: 0.72em;
+            text-align: left;
+        }
+
+        .download-table th,
+        .download-table td {
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 14px 16px;
+            vertical-align: top;
+        }
+
+        .download-table th {
+            font-weight: 700;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .download-table td {
+            color: #d9dee5;
+        }
+
         .flow-box {
             min-width: 220px;
             padding: 22px 26px;
@@ -155,7 +180,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 28px;
-            align-items: start;
+            align-items: stretch;
             margin-top: 28px;
         }
 
@@ -393,42 +418,55 @@ CreateFile("file.txt")
             <h2>Choosing the Correct Download</h2>
             <div class="download-grid">
                 <div class="download-card">
-                    <h3>Example download page</h3>
-                    <div class="download-option">
-                        <span>Windows x64</span>
-                        <span class="tag">64-bit</span>
-                    </div>
-                    <div class="download-option">
-                        <span>Windows x86</span>
-                        <span class="tag">32-bit</span>
-                    </div>
-                    <div class="download-option">
-                        <span>macOS</span>
-                        <span class="tag">Apple</span>
-                    </div>
-                    <div class="download-option">
-                        <span>Linux</span>
-                        <span class="tag">Package</span>
-                    </div>
-                    <div class="download-option">
-                        <span>ARM version</span>
-                        <span class="tag">CPU</span>
-                    </div>
+                    <h3>Example: a real download page</h3>
+
+                    <table class="download-table">
+                        <thead>
+                        <tr>
+                            <th>OS</th>
+                            <th>Installers</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Linux</td>
+                            <td>Package manager instructions</td>
+                        </tr>
+                        <tr>
+                            <td>macOS</td>
+                            <td>Arm64 | x64</td>
+                        </tr>
+                        <tr>
+                            <td>Windows</td>
+                            <td>x64 | x86 | Arm64 | winget instructions</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+
                 </div>
+
                 <div class="choose-card">
-                    <h3>How to choose correctly</h3>
+                    <h3>How to choose</h3>
                     <ul class="checklist">
-                        <li>Check your operating system</li>
-                        <li>Check your processor type</li>
-                        <li>Check if your system is 32-bit or 64-bit</li>
+                        <li>First: choose your operating system</li>
+                        <li>Then: choose the correct CPU version</li>
+                        <li>Finally: check 32-bit or 64-bit if needed</li>
                     </ul>
+
                 </div>
             </div>
             <aside class="notes">
-                When downloading software, you often see multiple versions of the same program.
-                For example, there may be versions for Windows, macOS, or Linux.
-                There may also be versions for different processor types or system types.
-                To install the correct version, you need to choose the one that matches your operating system, processor architecture, and system type.
+                This is a more realistic example of a download page.
+                One program may offer several versions for different operating systems and processors.
+                For example, macOS may offer Arm64 and x64 versions.
+                Windows may offer x64, x86, and Arm64.
+                This can look confusing at first.
+                The easiest way is to choose in three steps:
+                first the operating system,
+                then the processor version,
+                and finally 32-bit or 64-bit if needed.
             </aside>
         </section>
 
